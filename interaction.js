@@ -31,12 +31,14 @@ function getMousePosition(canvas, evt) {
 DnD.prototype.mousePressed = function(evt) {
     this.posInit = getMousePosition(this.canvas, evt);
     this.pressed = true;
+    this.interactor.onInteractionStart(this);
     console.log("Mouse pressed " + this.posInit.x + " " + this.posInit.y);
 }
 
 DnD.prototype.mouseMoved = function(evt) {
     if (this.pressed) {
         this.posFin = getMousePosition(this.canvas, evt);
+        this.interactor.onInteractionUpdate(this);
         console.log("Mouse moved " + this.posFin.x + " " + this.posFin.y);
     }
 }
@@ -44,6 +46,7 @@ DnD.prototype.mouseMoved = function(evt) {
 DnD.prototype.mouseReleased = function(evt) {
     this.posFin = getMousePosition(this.canvas, evt);
     this.pressed = false;
+    this.interactor.onInteractionEnd(this);
     console.log("Mouse released " + this.posFin.x + " " + this.posFin.y);
 }
 
