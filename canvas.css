@@ -1,6 +1,24 @@
+#myCanvas {
+    width: 700px;
+    height: 600px;
+}
 
-.myCanvas {
+ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+li > button {
+    height: 100%;
+}
+
+li {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cf:before,.cf:after{content:"";display:table}.cf:after{clear:both}.cf{zoom:1}

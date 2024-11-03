@@ -9,12 +9,26 @@ class Drawing {
 
     paint(ctx) {
         console.log(this.getForms());
-        ctx.fillStyle = '#F0F0F0'; // set canvas' background color
+        ctx.fillStyle = '#F0F0F0';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        this.getForms().forEach(function (eltDuTableau) {
-            // now fill the canvas
-            eltDuTableau.paint(ctx);
-        }); 
+        this.shapes.forEach(function(form) {
+            form.paint(ctx);
+        });
+    }
+
+    addForm(form) {
+        this.shapes.push(form);
+        this.paint(ctx);
+    }
+
+    removeLastForm() {
+        this.shapes.pop()
+        this.paint(ctx);
+    }
+
+    removeForm(i) {
+        this.shapes.splice(i, 1);
+        this.paint(ctx);
     }
 
 }
@@ -100,7 +114,3 @@ class Line extends Shape {
         ctx.stroke();
     }
 }
-
-
-// Implémenter ici les 4 classes du modèle.
-// N'oubliez pas l'héritage !
